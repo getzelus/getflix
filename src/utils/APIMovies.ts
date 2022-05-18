@@ -1,4 +1,6 @@
-const movies = [
+import IMovie from '../interfaces/IMovie';
+
+const movies: IMovie[] = [
   {
     id: '1',
     title: 'Oceans 8',
@@ -62,4 +64,14 @@ const movies = [
   },
 ]
 
-export const movies$ = new Promise((resolve, reject) => setTimeout(resolve, 100, movies))
+/*
+const APIMovies = new Promise((resolve, reject) => setTimeout(resolve, 100, movies));
+export default APIMovies;
+*/
+
+function APIMovies(){
+  return new Promise( (resolve, reject) =>setTimeout(() => resolve(movies), 1000)
+  );
+}
+export default APIMovies;
+
