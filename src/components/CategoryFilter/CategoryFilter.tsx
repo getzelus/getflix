@@ -1,9 +1,7 @@
 import './category-filter.scss';
 import React, { useState } from 'react';
 
-//import { useAppSelector, useAppDispatch } from '../storage/hooks';
 import Select from 'react-select'
-
 import IMovie from '../../interfaces/IMovie';
 
 interface IProps{

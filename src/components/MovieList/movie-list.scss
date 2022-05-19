@@ -7,13 +7,20 @@ body{
 
 }
 
+.top{
+    margin-left: 6vw;
+}
+
 .title{
     font-family: Koulen;
     font-size: 6vh;
     color: red;
-    margin-left: 6vw;
     margin-bottom: 1vh;
-   
+}
+
+.flex-sort{
+    display: flex;
+    gap: 8px;
 }
 
 .movie-list{
