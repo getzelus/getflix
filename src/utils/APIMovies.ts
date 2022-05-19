@@ -70,7 +70,7 @@ export default APIMovies;
 */
 
 function APIMovies(){
-  return new Promise( (resolve, reject) =>setTimeout(() => resolve(movies), 1000)
+  return new Promise( (resolve, reject) =>setTimeout(() => resolve(movies), 100)
   );
 }
 export default APIMovies;

@@ -1,3 +1,22 @@
 .movie-list{
-    margin-left: 10px;
+    margin-top: 1vw;
 }
+
+.movies{
+    display: flex;
+    gap: 4vw;
+    justify-content: center;
+  //  align-items: center;
+    flex-wrap: wrap; 
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
+   
+}
+
+
+
+/*
+
+    
+  */

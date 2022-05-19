@@ -43,6 +43,7 @@ export default function MovieList() {
         if (!cats.length) {
             newMovies = movies;
         }else{
+            // if liked in category
             cats.forEach( (c:any) => {
                 let newArray: IMovie[] = movies.filter( m => m.category === c);
                 newMovies = newMovies.concat(newArray);
@@ -69,7 +70,9 @@ export default function MovieList() {
     const displayMovies = () => {
         let start: number = (currentPage - 1)*itemsByPage;
          let newMovies: IMovie[] = filteredMovies.slice(start, start+itemsByPage);
-        return newMovies.map(m => <Movie key={m.id} movie={m} onDeleteMovie={onDeleteMovie} />) ;
+        return newMovies.map(m => 
+            <Movie key={m.id} movie={m} onDeleteMovie={onDeleteMovie} />
+        ) ;
     }
 
     return (
@@ -82,7 +85,7 @@ export default function MovieList() {
                 length={filteredMovies.length} itemsByPage={itemsByPage} currentPage={currentPage} changeItemsByPage={changeItemsByPage} changePage={changePage}
             />
 
-             <div>
+             <div className='movies'>
                 {displayMovies()}
              </div>
 

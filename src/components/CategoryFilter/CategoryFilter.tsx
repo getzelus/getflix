@@ -29,7 +29,7 @@ export default function CategoryFilter({movies, changeFilteredMovies}: IProps) {
        }  
     });
 
-    const handleChange = (categoriesObjects:any) => {
+    const handleChange = (categoriesObjects: any) => {
         
         setCategoeriesSelected(categoriesObjects);
         let cats = categoriesObjects.map( (c:ICategory) => c.value);
@@ -37,9 +37,8 @@ export default function CategoryFilter({movies, changeFilteredMovies}: IProps) {
      }
 
     return (
-        <div className="category-filter">
-           Category filter 
-           <Select isMulti options={categories} onChange={handleChange} />
+        <div className="category-filter"> 
+           <Select isMulti options={categories} onChange={handleChange} placeholder='Select categories' />
         </div>
     );
 

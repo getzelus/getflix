@@ -5,7 +5,6 @@ import APIMovies from '../../utils/APIMovies';
 import IMovie from '../../interfaces/IMovie';
 
 export interface MovieState {
- // value: number;
   status: 'idle' | 'loading' | 'failed';
   movies: IMovie[]
   moviesLiked: IMovie[]
@@ -13,7 +12,6 @@ export interface MovieState {
 }
 
 const initialState: MovieState = {
-//  value: 0,
   status: 'idle',
   movies: [],
   moviesLiked: [],
@@ -21,8 +19,7 @@ const initialState: MovieState = {
 };
 
 export const readMovies = createAsyncThunk(
-  'movie/read',
-  async () => {
+  'movie/read', async () => {
     const response:any = await APIMovies();
      // console.log(response);
     return response;
@@ -37,12 +34,13 @@ export const moviesSlice = createSlice({
     
     deleteMovie: (state, action: PayloadAction<string>) => {
       state.movies = state.movies.filter(m => m.id !== action.payload);
+      state.moviesLiked = state.moviesLiked.filter(m => m.id !== action.payload);
+      state.moviesDisliked = state.moviesDisliked.filter(m => m.id !== action.payload);
     },
     updateMovie: (state, action: PayloadAction<IMovie>) => {
       state.movies = state.movies.map(m => m.id === action.payload.id ? action.payload : m);
     },
     switchLike: (state, action: PayloadAction<IMovie>) => {
-      console.log(action);
       let some = state.moviesLiked.some(m => m.id === action.payload.id );
       let index = state.movies.findIndex( m => m.id === action.payload.id);
       if (some) {
@@ -79,16 +77,6 @@ export const moviesSlice = createSlice({
 
 },
 
-    /*
-    increment: (state) => {
-      state.value += 1;
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
-    },
-  },
-  */
-
   extraReducers: (builder) => {
     builder
       .addCase(readMovies.pending, (state) => {
@@ -114,8 +102,7 @@ export const selectMoviesDisliked = (state: RootState) => state.movies.moviesDis
 
 
 /*
-export const incrementIfOdd =
-  (amount: number): AppThunk =>
+export const incrementIfOdd =  (amount: number): AppThunk =>
   (dispatch:any, getState:any) => {
     const currentValue = selectCount(getState());
     if (currentValue % 2 === 1) {

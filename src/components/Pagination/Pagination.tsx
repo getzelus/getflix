@@ -1,5 +1,7 @@
 import './pagination.scss';
 
+import { BsArrowRightCircle, BsArrowLeftCircle } from 'react-icons/bs';
+
 import React from 'react';
 
 interface IProps{
@@ -67,8 +69,8 @@ export default function Pagination({length, itemsByPage, currentPage, changeItem
            </div>
 
             <div>
-                {currentPage > 1 && <p onClick={() => onChangePage(currentPage-1)}> previous </p>}
-                {currentPage*itemsByPage < length && <p onClick={() => onChangePage(currentPage+1)}> next </p>}
+                {currentPage > 1 && <p onClick={() => onChangePage(currentPage-1)}> <BsArrowLeftCircle /> </p>}
+                {currentPage*itemsByPage < length && <p onClick={() => onChangePage(currentPage+1)}> <BsArrowRightCircle /> </p>}
             </div>
 
         </div>
