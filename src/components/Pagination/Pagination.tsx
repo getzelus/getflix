@@ -14,15 +14,6 @@ interface IProps{
 
 export default function Pagination({length, itemsByPage, currentPage, changeItemsByPage, changePage}: IProps) {
 
-  
-
-   const nextPage = () => {
-       // setCurrentPage((page) => page + 1);
-   }
-
-   const previousPage = () => {
-       // setCurrentPage((page) => page - 1);
-    }   
 
     const totalPages: number = Math.ceil(length / itemsByPage);
    
@@ -38,7 +29,6 @@ export default function Pagination({length, itemsByPage, currentPage, changeItem
     }
     */
 
-
     const onChangeItemsByPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
         changeItemsByPage(Number(e.target.value));
     }
@@ -47,16 +37,11 @@ export default function Pagination({length, itemsByPage, currentPage, changeItem
         changePage(Number(p));
     }
 
-
-    // cadre à côté de select ? 
-
-    // next et previous page easy
-  
     return (
         <div className="pagination">
            
            <div> Items by page : 
-             <select onChange={onChangeItemsByPage}> 
+             <select className='select-num-items' onChange={onChangeItemsByPage}> 
                    <option value={4} >4</option>
                    <option value={8}>8</option>
                    <option value={12}>12</option>
@@ -65,13 +50,14 @@ export default function Pagination({length, itemsByPage, currentPage, changeItem
             </div>
 
            <div> 
-                {pageNumbers.map(p => <span key={p} className={p===currentPage ? 'page-selected' : 'page'} onClick={ () => onChangePage(p)}>{p} </span>  )}
+                 {currentPage > 1 && <span className='arrow arrow-left' onClick={() => onChangePage(currentPage-1)}> <BsArrowLeftCircle /> </span>}
+                 {pageNumbers.map(p => 
+                    <span key={p} className={p===currentPage ? 'page-selected' : 'page-not-selected'} onClick={ () => onChangePage(p)}>{p} </span> 
+                )}
+                {currentPage*itemsByPage < length && <span className='arrow' onClick={() => onChangePage(currentPage+1)}> <BsArrowRightCircle /> </span>}
            </div>
 
-            <div>
-                {currentPage > 1 && <p onClick={() => onChangePage(currentPage-1)}> <BsArrowLeftCircle /> </p>}
-                {currentPage*itemsByPage < length && <p onClick={() => onChangePage(currentPage+1)}> <BsArrowRightCircle /> </p>}
-            </div>
+         
 
         </div>
     );

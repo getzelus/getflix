@@ -1,0 +1,8 @@
+.category-filter{
+    width: 80%;
+    margin-left: 6vw;
+
+    @media (min-width: 800px) {
+        width: 20%;
+    }
+}

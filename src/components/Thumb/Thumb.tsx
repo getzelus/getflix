@@ -1,4 +1,4 @@
-//import './thumb.scss';
+import './thumb.scss';
 import { IconType } from "react-icons";
 
 import React from 'react';
@@ -17,11 +17,11 @@ export default function Pagination({num, action, filled, EmptyIcon, FillIcon, sw
 
   
     return (
-        <div className="thumb" onClick={() => switchAction(action)}>
+        <span className={action==='dislike' ? 'thumb thumb-right' : 'thumb'} onClick={() => switchAction(action)}>
           {filled ? <FillIcon /> : <EmptyIcon />}  
             {num}
 
-        </div>
+        </span>
     );
 
 }

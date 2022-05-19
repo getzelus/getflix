@@ -1,7 +1,44 @@
-.page-selected{
-    border: 1px solid black;
+.pagination{
+    margin-top: 2vh;
+    margin-left: 6vw;
+    color: white;
 }
 
-.page{
-    color: black;
+.select-num-items{
+    margin-left: 10px;
+    padding: 4px;
+    border-radius: 10px;
+
+}
+
+.arrow{
+    cursor: pointer;
+
+    &:hover{
+        opacity: 0.6;
+    }
+}
+
+.arrow-left{
+    margin-right: 8px;
+}
+
+@mixin page {
+ 
+   margin-right: 8px;
+  }
+
+.page-selected{
+    @include page;
+    color: red;
+}
+
+.page-not-selected{
+    @include page;
+    color: white;
+    cursor: pointer;
+
+    &:hover{
+        color: red;
+    }
 }

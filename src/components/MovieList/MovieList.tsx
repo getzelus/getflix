@@ -17,7 +17,7 @@ export default function MovieList() {
     const dispatch = useAppDispatch();
     
     const movies: IMovie[] = useAppSelector(selectMovies);
-     const status: string = useAppSelector(selectStatus);
+    // const status: string = useAppSelector(selectStatus);
 
     const [filteredMovies, setFilteredMovies] = useState<IMovie[]>([]);
     
@@ -77,7 +77,8 @@ export default function MovieList() {
 
     return (
         <div className='movie-list'>
-             <div> {status} </div>
+             
+             <div className='title'>GetFlix</div>
 
              <CategoryFilter movies={movies} changeFilteredMovies={changeFilteredMovies} />
              

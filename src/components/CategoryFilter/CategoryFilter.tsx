@@ -1,3 +1,4 @@
+import './category-filter.scss';
 import React, { useState } from 'react';
 
 //import { useAppSelector, useAppDispatch } from '../storage/hooks';
@@ -38,7 +39,7 @@ export default function CategoryFilter({movies, changeFilteredMovies}: IProps) {
 
     return (
         <div className="category-filter"> 
-           <Select isMulti options={categories} onChange={handleChange} placeholder='Select categories' />
+           <Select isMulti options={categories} onChange={handleChange} placeholder='Filter' />
         </div>
     );
 

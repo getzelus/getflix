@@ -1,0 +1,11 @@
+.thumb{
+    cursor: pointer;
+    &:hover{
+        opacity: 0.6;
+       
+    }
+}
+
+.thumb-right{
+    margin-left: 8px;
+}

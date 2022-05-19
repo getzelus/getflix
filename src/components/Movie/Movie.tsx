@@ -41,8 +41,9 @@ export default function Movie({movie, onDeleteMovie}: Props) {
     return (
         <div className="movie">
             
-            <p className='movie-title'>{movie.title}</p>
-            <p onClick={() => onDeleteMovie(movie.id)}> <BsXCircle /></p>
+            <div className='delete-movie' onClick={() => onDeleteMovie(movie.id)}> <BsXCircle /></div>
+            <div className='movie-title'>{movie.title}</div>
+           
             <p><i>{movie.category}</i></p>
 
             <div>
