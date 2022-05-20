@@ -64,14 +64,8 @@ const movies: IMovie[] = [
   },
 ]
 
-/*
-const APIMovies = new Promise((resolve, reject) => setTimeout(resolve, 100, movies));
-export default APIMovies;
-*/
-
 function APIMovies(){
-  return new Promise( (resolve, reject) =>setTimeout(() => resolve(movies), 100)
-  );
+  return new Promise( (resolve, reject) => setTimeout(() => resolve(movies), 500));
 }
 export default APIMovies;
 

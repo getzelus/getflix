@@ -1,7 +1,7 @@
 import './thumb.scss';
-import { IconType } from "react-icons";
-
 import React from 'react';
+
+import { IconType } from "react-icons";
 
 interface IProps{
     num: number
@@ -14,15 +14,11 @@ interface IProps{
 
 export default function Pagination({num, action, filled, EmptyIcon, FillIcon, switchAction}: IProps) {
 
-
-  
     return (
         <span className={action==='dislike' ? 'thumb thumb-right' : 'thumb'} onClick={() => switchAction(action)}>
           {filled ? <FillIcon /> : <EmptyIcon />}  
             {num}
-
         </span>
     );
-
 }
 

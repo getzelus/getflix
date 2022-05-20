@@ -1,6 +1,5 @@
 .movie{
-background-color: rgb(248, 223, 223);
-
+  background-color: rgb(248, 223, 223);
   transition: 0.3s;
   padding: 20px 20px 20px 20px;
   border-radius: 10px;
@@ -10,7 +9,6 @@ background-color: rgb(248, 223, 223);
     @media (min-width: 800px) {
         transform: scale(1.1);
     }
-
   }
 }
 

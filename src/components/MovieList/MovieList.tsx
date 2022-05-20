@@ -13,43 +13,42 @@ import Sorting from '../Sorting/Sorting';
 
 export default function MovieList() {
 
-   // console.log('movie list');
-
     const dispatch = useAppDispatch();
     
     const movies: IMovie[] = useAppSelector(selectMovies);
     const moviesLiked: IMovie[] = useAppSelector(selectMoviesLiked);
-    // const status: string = useAppSelector(selectStatus);
+    const status: string = useAppSelector(selectStatus);
 
     const [filteredMovies, setFilteredMovies] = useState<IMovie[]>([]);
-    
    const [itemsByPage, setItemsByPage] = useState<number>(4);
    const [currentPage, setCurrentPage] = useState<number>(1);
    const [sorting, setSorting] = useState<string>('Sorting');
-
-   console.log(sorting);
-
-
 
     useEffect( () => {
         
         // Check if movies are already fetched if we change page 
         if (movies.length > 0) {
             setFilteredMovies(movies);
-            // do everything instead, also with page
         }else{
             dispatch(readMovies())
         }
     }, [dispatch, movies])
 
-    const changeFilteredMovies = (cats: string[]) => {
+    const changeFilteredMovies = (cats: string[], likeSelected: boolean) => {
+        
         let newMovies: IMovie[] = [];
-      
+       let moviesBase: IMovie[];
+        if (likeSelected){
+            moviesBase = [...moviesLiked];
+       }else{
+           moviesBase = [...movies];
+       }
+    
         if (!cats.length) {
-            newMovies = movies;
+            newMovies = moviesBase;
         }else{
             cats.forEach( (c:any) => {
-                let newArray: IMovie[] = movies.filter( m => m.category === c);
+                let newArray: IMovie[] = moviesBase.filter( m => m.category === c);
                 newMovies = newMovies.concat(newArray);
             });
         }
@@ -59,12 +58,10 @@ export default function MovieList() {
     const changeItemsByPage = (items: number) => {
         if (items < 0) return;
         setItemsByPage(items);
-        // change pagedMovies
     }
 
     const changePage = (page: number) => {
         setCurrentPage(page);
-        //change pagedMovies ?
     }
 
     const onDeleteMovie = (id: string) => {
@@ -86,8 +83,6 @@ export default function MovieList() {
         let start: number = (currentPage - 1)*itemsByPage;
          newMovies = newMovies.slice(start, start+itemsByPage);
 
-      
-
         return newMovies.map(m => 
             <Movie key={m.id} movie={m} onDeleteMovie={onDeleteMovie} />
         ) ;
@@ -105,15 +100,18 @@ export default function MovieList() {
                     <Pagination 
                         length={filteredMovies.length} itemsByPage={itemsByPage} currentPage={currentPage} changeItemsByPage={changeItemsByPage} changePage={changePage}
                     />
-                    <Sorting onChangeSorting={setSorting} />
+                    <Sorting onChangeSorting={setSorting} sortingDefault={sorting} />
                 </div>
             </div>
 
              <div className='movies'>
-                {displayMovies()}
+                {status !== 'idle' ? 
+                    <div className='status'>{status}</div>
+                     : 
+                     displayMovies()
+                } 
              </div>
 
-            
         </div>
     );
 

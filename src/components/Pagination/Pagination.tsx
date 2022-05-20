@@ -1,8 +1,7 @@
 import './pagination.scss';
+import React from 'react';
 
 import { BsArrowRightCircle, BsArrowLeftCircle } from 'react-icons/bs';
-
-import React from 'react';
 
 interface IProps{
     length: number
@@ -14,20 +13,12 @@ interface IProps{
 
 export default function Pagination({length, itemsByPage, currentPage, changeItemsByPage, changePage}: IProps) {
 
-
     const totalPages: number = Math.ceil(length / itemsByPage);
    
     const pageNumbers: number[] = [];
     for (let i=1; i<=totalPages; i++){
         pageNumbers.push(i);
     }
-
-    /*
-    const itemNumbers: number[] = [];
-    for (let i=1; i<=length; i++){
-        itemNumbers.push(i);
-    }
-    */
 
     const onChangeItemsByPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
         changeItemsByPage(Number(e.target.value));
@@ -41,11 +32,10 @@ export default function Pagination({length, itemsByPage, currentPage, changeItem
         <div className="pagination">
            
            <div> Items by page : 
-             <select className='select-num-items' onChange={onChangeItemsByPage}> 
+             <select className='select-num-items' onChange={onChangeItemsByPage} defaultValue={itemsByPage}> 
                    <option value={4} >4</option>
                    <option value={8}>8</option>
                    <option value={12}>12</option>
-       
               </select>
             </div>
 
@@ -57,10 +47,7 @@ export default function Pagination({length, itemsByPage, currentPage, changeItem
                 {currentPage*itemsByPage < length && <span className='arrow' onClick={() => onChangePage(currentPage+1)}> <BsArrowRightCircle /> </span>}
            </div>
 
-         
-
         </div>
     );
-
 }
 

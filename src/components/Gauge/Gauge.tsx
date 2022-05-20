@@ -1,5 +1,4 @@
 import './gauge.scss'
-
 import React from 'react';
 
 interface Props{
@@ -34,9 +33,7 @@ export default function Gauge({likes, dislikes}: Props) {
         <div className="gauge">
             <div style={gaugeLikes}></div>
             <div style={gaugeDislikes}></div>
-            
         </div>
     );
-
 }
 

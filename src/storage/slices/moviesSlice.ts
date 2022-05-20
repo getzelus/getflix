@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState /*, AppThunk*/ } from '../store';
 import APIMovies from '../../utils/APIMovies';
-
 import IMovie from '../../interfaces/IMovie';
 
 export interface MovieState {

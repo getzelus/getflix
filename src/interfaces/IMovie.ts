@@ -5,7 +5,6 @@ interface IMovie{
     likes: number
     dislikes: number
 }
-
 export default IMovie;
 
 
